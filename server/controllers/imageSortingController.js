@@ -196,6 +196,8 @@ exports.publishResults = async (req, res) => {
     try {
         const exam = await VisualExam.findById(req.params.id);
         if (!exam) return res.status(404).json({ message: 'Not found' });
+        if (exam.teacherId.toString() !== req.user._id.toString())
+            return res.status(401).json({ message: 'Not authorized' });
         exam.resultsPublished = true;
         await exam.save();
         res.json({ message: 'Published' });

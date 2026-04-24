@@ -59,7 +59,7 @@ const getExamQuestions = async (req, res) => {
         // Populate questions but HIDE correct answers for MCQs
         const examWithQuestions = await Exam.findById(req.params.id).populate({
             path: 'questionIds',
-            select: '-correctAnswer' // Exclude correct answer
+            select: '-correctAnswer -correctAnswers' // Exclude both single and multi-correct answers
         });
 
         res.json(examWithQuestions);

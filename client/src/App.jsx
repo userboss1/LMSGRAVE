@@ -25,8 +25,8 @@ const PrivateRoute = ({ children, allowedRoles }) => {
 
 function App() {
   return (
-    <Router>
-      <AuthProvider>
+    <AuthProvider>
+      <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
 
@@ -49,8 +49,8 @@ function App() {
           />
         </Routes>
         <ToastContainer />
-      </AuthProvider>
-    </Router>
+      </Router>
+    </AuthProvider>
   );
 }
 
